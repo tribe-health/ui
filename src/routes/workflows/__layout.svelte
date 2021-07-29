@@ -30,8 +30,9 @@
 <script lang="ts">
   import WorkflowsSummaryTable from './_workflows-summary-table.svelte';
   import WorkflowsSummaryRow from './_workflows-summary-row.svelte';
+  import type { ListClosedWorkflowExecutionsResponse } from '$types/temporal/api/workflowservice/v1/request_response';
 
-  export let workflows: WorkflowsAPIResponse;
+  export let workflows: ListClosedWorkflowExecutionsResponse;
 </script>
 
 <section class="flex items-start">

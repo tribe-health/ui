@@ -20,11 +20,18 @@ const fetchWorkflows: (
   return await response.json();
 };
 
+interface Workflows extends ListWorkflowExecutionsResponse {
+  nextPageTokens: {
+    open: Uint8Array,
+    closed: Uint8Array,
+  }
+}
+
 export async function get({ query }: { query: URLSearchParams }) {
   const openWorkflows = fetchWorkflows('open', query);
   const closedWorkflows = fetchWorkflows('closed', query);
 
-  const workflows = await Promise.all([openWorkflows, closedWorkflows]).then(
+  const workflows: Workflows = await Promise.all([openWorkflows, closedWorkflows]).then(
     ([open, closed]) => {
       return {
         executions: [...open.executions, ...closed.executions],
@@ -32,6 +39,7 @@ export async function get({ query }: { query: URLSearchParams }) {
           open: open.nextPageToken,
           closed: closed.nextPageToken,
         },
+        nextPageToken: null
       };
     },
   );

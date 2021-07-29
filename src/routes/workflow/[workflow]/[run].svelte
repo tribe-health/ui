@@ -62,8 +62,9 @@
   import WorkflowStatus from '$lib/components/workflow-status.svelte';
   import CodeBlock from '../../workflows/[workflow]/_code-block.svelte';
   import { formatDate } from '$lib/utilities/format-date';
+  import type { WorkflowExecutionInfo } from '$types/temporal/api/workflow/v1/message';
 
-  export let workflow: WorkflowExecutionAPIResponse;
+  export let workflow: WorkflowExecutionInfo;
   export let name: string;
   export let workflowId: string;
   export let runId: string;

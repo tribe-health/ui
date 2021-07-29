@@ -6,8 +6,9 @@
   import { pathMatches } from '$lib/utilities/path-matches';
   import { formatDate } from '$lib/utilities/format-date';
   import { encodeURISegments } from '$lib/utilities/encode-uri-segments';
+  import type { WorkflowExecutionInfo } from '$types/temporal/api/workflow/v1/message';
 
-  export let workflow: WorkflowExecutionAPIResponse;
+  export let workflow: WorkflowExecutionInfo;
   let workflowUrl = encodeURISegments(
     `/workflows/${workflow.execution.workflowId}/${workflow.execution.runId}`,
   );
