@@ -17,7 +17,7 @@
       <div class="value">{activity.state}</div>
     </div>
     <div class="row">
-      <div class="key">Heartbeat Detaults</div>
+      <div class="key">Heartbeat Defaults</div>
       <div class="value">{activity.heartbeatDetails}</div>
     </div>
     <div class="row">
