@@ -1,7 +1,7 @@
 <script lang="ts">
   import { goto } from '$app/navigation';
 
-  import { getContext } from 'svelte';
+  import { getContext, setContext } from 'svelte';
 
   import type { DescribeNamespaceResponse } from '$types/temporal/api/workflowservice/v1/request_response';
 
@@ -27,7 +27,8 @@
   }
   function switchNamespace(newNamespace) {
     showDropdown = false;
-    goto('/namespaces/' + newNamespace);
+    goto('/namespaces/' + newNamespace, {replaceState: true});
+    setContext('namespace', '')
     // todo: this somehow doesnt update the getContext('namespace') correctly
   }
 </script>
